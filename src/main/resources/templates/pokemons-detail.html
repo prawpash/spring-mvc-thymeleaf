@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Pokemons</title>
+</head>
+<body>
+<div layout:fragment="main" class="grid grid-cols-3 gap-2 p-2 mt-[70px]">
+    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+            <img class="rounded-t-lg" th:src="${pokemon.photo}" alt="" />
+        </a>
+        <div class="p-5">
+            <a href="#">
+                <h5 th:text="${pokemon.name}" class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"></h5>
+            </a>
+            <hr>
+            <h3>Ability</h3>
+            <p th:text="${pokemon.ability}"></p>
+            <hr>
+            <h3>Category</h3>
+            <p th:text="${pokemon.category}"></p>
+            <hr>
+            <h3>Types</h3>
+            <p>
+                <a href="#" th:each="type : ${pokemon.types}" th:text="${type}"></a>
+            </p>
+            <a th:href="@{/pokemons/{id}/edit(id=${pokemon.id})}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-yellow-700 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+                Edit
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
